@@ -3,12 +3,12 @@ import React from 'react';
 import { Paragrafo } from './styled';
 import { Conteiner } from '../../styles/GlobalStyles';
 
-function Login() {
+function Aluno() {
 	return (
 		<Conteiner>
-			<h1> Login </h1>
+			<h1> Aluno </h1>
 		</Conteiner>
 	);
 }
 
-export default Login;
+export default Aluno;
