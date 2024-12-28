@@ -6,11 +6,13 @@ import { get } from 'lodash';
 import isEmail from 'validator/lib/isEmail';
 import { Form } from './styled';
 import { Conteiner } from '../../styles/GlobalStyles';
+import Loading from '../../components/Loading';
 
 function Registros() {
 	const [nome, setNome] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -30,6 +32,8 @@ function Registros() {
 			return;
 		}
 
+		setIsLoading(true);
+
 		try {
 			await axios.post('/users', {
 				nome,
@@ -37,6 +41,7 @@ function Registros() {
 				email,
 			});
 			toast.success('Você fez seu cadastro');
+			setIsLoading(false);
 			history.push('/login');
 		} catch (e) {
 			const errors = get(e, 'response.data.errors', []);
@@ -44,11 +49,13 @@ function Registros() {
 			if (errors) {
 				errors.map((error) => toast.error(error));
 			}
+			setIsLoading(false);
 		}
 	}
 
 	return (
 		<Conteiner>
+			<Loading isLoading={isLoading} />
 			<h1> Crie sua conta </h1>
 
 			<Form onSubmit={handleSubmit}>

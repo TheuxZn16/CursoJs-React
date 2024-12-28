@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Conteiner } from './styled';
 
-function Loading({ isLoading }) {
+function Loading({ isLoading = false }) {
 	if (!isLoading) return <></>;
 	return (
 		<Conteiner>
@@ -12,11 +12,7 @@ function Loading({ isLoading }) {
 	);
 }
 
-Loading.defaultProps = {
-	isLoading: false,
-};
-Loading.PropTypes = {
+Loading.propTypes = {
 	isLoading: PropTypes.bool,
 };
-
 export default Loading;
