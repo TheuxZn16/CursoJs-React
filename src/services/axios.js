@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-	baseURL: 'http://35.247.243.116',
+	baseURL: 'https://api-rest-curso-ycvo.onrender.com',
 });
